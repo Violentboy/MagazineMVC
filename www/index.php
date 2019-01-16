@@ -10,5 +10,5 @@ $controllerName = isset($_GET['controller']) ? ucfirst($_GET['controller']) : 'I
 $actionName = isset($_GET['action']) ? ($_GET['action']) : 'Index';
 
 //Вызов функции автозагрузки страницы
-loadPage($controllerName, $actionName);
+loadPage($smarty, $controllerName, $actionName);
 
