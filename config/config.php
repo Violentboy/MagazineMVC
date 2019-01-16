@@ -25,7 +25,7 @@ require ('../library/Smarty/libs/Smarty.class.php');
 $smarty = new Smarty();
 
 $smarty->setTemplateDir(TemplatePrefix);
-$smarty->setCompileDir('../tmp/smarty/temrlates_c');
+$smarty->setCompileDir('../tmp/smarty/templates_c');
 $smarty->setCacheDir('../tmp/smarty/chache');
 $smarty->setConfigDir('../library/Smarty/configs');
 
