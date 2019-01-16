@@ -1,8 +1,2 @@
-<html>
-    <head>
-        <title>{$pageTitle}</title>
-    </head>
-    <body>
-        {$pageTitle}
-    </body>
-</html>
+{include file='header.tpl'}
+{include file='footer.tpl'}

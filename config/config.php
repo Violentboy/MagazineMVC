@@ -29,5 +29,5 @@ $smarty->setCompileDir('../tmp/smarty/templates_c');
 $smarty->setCacheDir('../tmp/smarty/chache');
 $smarty->setConfigDir('../library/Smarty/configs');
 
-$smarty->assign('templateWebPath', TemplateWebPath);
+$smarty->assign('TemplateWebPath', TemplateWebPath);
 //<

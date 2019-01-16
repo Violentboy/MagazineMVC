@@ -17,6 +17,6 @@
     function indexAction($smarty){
         // assign() — назначает значение шаблону
         $smarty->assign('pageTitle', 'Главная страница сайта');
-        
+ 
         loadTemplate($smarty, 'index');
     }
