@@ -8,7 +8,7 @@
 include_once '../models/CategoriesModel.php';
 
     function testAction() {
-        echo 'IndexContoller.php > testAction';
+        echo 'IndexController.php > testAction';
     }
     
 /**
