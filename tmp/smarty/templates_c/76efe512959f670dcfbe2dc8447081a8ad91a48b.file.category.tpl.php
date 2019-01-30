@@ -1,33 +1,36 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2019-01-30 15:29:04
-         compiled from "../views/default\index.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:104715c3ef5ea100687-38893713%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.6, created on 2019-01-25 17:13:52
+         compiled from "../views/default\category.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:302935c4afb1e6e5cc3-43569108%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '345bdb8f839f160ac4fa3a7e53630c8be64410e5' => 
+    '76efe512959f670dcfbe2dc8447081a8ad91a48b' => 
     array (
-      0 => '../views/default\\index.tpl',
-      1 => 1548850338,
+      0 => '../views/default\\category.tpl',
+      1 => 1548425622,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '104715c3ef5ea100687-38893713',
+  'nocache_hash' => '302935c4afb1e6e5cc3-43569108',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.6',
-  'unifunc' => 'content_5c3ef5ea14e89',
+  'unifunc' => 'content_5c4afb1e7a537',
   'variables' => 
   array (
+    'rsCategory' => 0,
     'rsProducts' => 0,
+    'rsChildCats' => 0,
     'item' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5c3ef5ea14e89')) {function content_5c3ef5ea14e89($_smarty_tpl) {?>
-<?php echo $_smarty_tpl->getSubTemplate ('header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php if ($_valid && !is_callable('content_5c4afb1e7a537')) {function content_5c4afb1e7a537($_smarty_tpl) {?>
+<h1>Товары категории <?php echo $_smarty_tpl->tpl_vars['rsCategory']->value['name'];?>
+</h1>
 
-
+<?php if (($_smarty_tpl->tpl_vars['rsProducts']->value||$_smarty_tpl->tpl_vars['rsChildCats']->value)){?>
 <?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['rsProducts']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
  $_smarty_tpl->tpl_vars['smarty']->value['foreach']['products']['iteration']=0;
@@ -49,9 +52,23 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
     <?php if ($_smarty_tpl->getVariable('smarty')->value['foreach']['products']['iteration']%3==0){?>
         <div style="clear: both"></div>
     <?php }?>
-    
+ 
 <?php } ?>
 
+<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['rsChildCats']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+?>
+    <h2><a href="/category/<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
+"><?php echo $_smarty_tpl->tpl_vars['item']->value['name'];?>
+</a></h2>
+<?php } ?>
 
-<?php echo $_smarty_tpl->getSubTemplate ('footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php }else{ ?>
+    <h2 style="color: red"><ins>Здесь товаров пока еще нет!</ins></h2>
+<?php }?>
+
+
+
 <?php }} ?>

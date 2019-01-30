@@ -27,8 +27,7 @@ function getChildrenForCat($catId){
      */
 function getAllMainCatsWithChildren() {
     $sql = "SELECT *
-            FROM
-            categories
+            FROM categories
             WHERE parent_id = 0";
     $rs  = db()->query($sql);
     $smartyRs = array();
@@ -42,4 +41,20 @@ function getAllMainCatsWithChildren() {
         $smartyRs[] = $row;
     }
     return $smartyRs;
+}
+
+
+/**
+ * Получить данные категории по id
+ * 
+ * @param integer $catId категории
+ * @return array массив - строка категории
+ */
+function getCatById($catId){
+    $catId = intval($catId); // intval - преобразует в тип integer, защита от Sql-инъекций
+    $sql = "SELECT *
+            FROM categories
+            WHERE id = '{$catId}'";
+    $rs = db()->query($sql);
+    return $rs->fetch_assoc();
 }
