@@ -19,16 +19,20 @@ include_once '../models/CategoriesModel.php';
 function indexAction($smarty){
     
     // Получаем идентификатор продукта из параметра $_GET['id']
-    $itemId = (filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT))  ?
-            (filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)) : null;
-    if ($itemId === null) {
-        exit (); }
+    $itemId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT) ?
+              filter_input(INPUT_GET, 'id') : null;
+    if (!$itemId) {return false;}
     
     // Получить данные продукта
-    $rsProduct = getProductsById($itemId);
+    $rsProduct = getProductById($itemId);
 
     // Получить все категории        
     $rsCategories = getAllMainCatsWithChildren();
+    
+    $smarty->assign('itemInCart', 0);
+    if (in_array($itemId, $_SESSION['cart'])){
+        $smarty->assign('itemInCart', 1);
+    }
         
     $smarty->assign('pageTitle', '');
     $smarty->assign('rsCategories', $rsCategories);

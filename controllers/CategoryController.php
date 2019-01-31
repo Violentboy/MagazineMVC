@@ -16,9 +16,9 @@ include_once '../models/ProductsModel.php';
  * @param object $smarty шаблонизатор
  */
 function indexAction($smarty){
-    $catId = (filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT))  ?
-            (filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)) : null;
-    if ($catId === null) { exit ();}
+    $catId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT) ?
+             filter_input(INPUT_GET, 'id') : null;
+    if (!$catId) {return false;}
     $rsProducts = null;
     $rsChildCats = null;
     $rsCategory = getCatById($catId);

@@ -41,11 +41,11 @@ function getProductsByCat($itemId){
  * @param integer $itemId ID продукта
  * @return array массив данных продукта
  */
-function getProductsById($itemId){
+function getProductById($itemId){
     $itemId = intval($itemId); //intval - преобразует в тип integer, защита от Sql-инъекций       
     $sql = "SELECT *
             FROM products 
             WHERE id = '{$itemId}'";       
     $rs = db()->query($sql);
-    return createSmartyRsArray($rs);
+    return mysqli_fetch_assoc($rs);
 }

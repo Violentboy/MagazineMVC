@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2019-01-17 14:09:43
+<?php /* Smarty version Smarty-3.1.6, created on 2019-01-30 17:38:15
          compiled from "../views/default\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:213095c3eff5ed42ee3-77466910%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9797888b337e03f99b06385b60a372bbb52d5e02' => 
     array (
       0 => '../views/default\\header.tpl',
-      1 => 1547722978,
+      1 => 1548858455,
       2 => 'file',
     ),
   ),
@@ -30,18 +30,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </title>
         <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['TemplateWebPath']->value;?>
 css/main.css" type="text/css"/>
+        <script type="text/javascript" src='/js/jquery-1.7.1.min.js'></script>
+        <script type="text/javascript" src='/js/main.js'></script>
     </head>
     <body>
         <div id="header">
             <h1>My shop - интернет магазин</h1>
         </div>
 
-        
-        
+                
         <?php echo $_smarty_tpl->getSubTemplate ('leftcolumn.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
-   
+           
         
-        
-        <div id="centerColumn">
-<?php }} ?>
+        <div id="centerColumn"><?php }} ?>
