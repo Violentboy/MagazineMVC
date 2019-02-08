@@ -49,3 +49,19 @@ function getProductById($itemId){
     $rs = db()->query($sql);
     return mysqli_fetch_assoc($rs);
 }
+
+
+/**
+ * Получить список продуктов из массива идентификаторов  (ID`s)
+ * 
+ * @param array $itemsIds массив идентификаторов продуктов
+ * @return array массив данных продуктов
+ */
+function getProductsFromArray($itemsIds){
+    $strIds = implode($itemsIds, ','); // Создаем строку с массивом айди через запятую
+    $sql = "SELECT *
+            FROM products 
+            WHERE id in ({$strIds})";   
+    $rs = db()->query($sql);
+    return createSmartyRsArray($rs);
+}
