@@ -1,67 +1,83 @@
 <?php
+
 /**
  * Модель для таблицы продукции (products)
  * 
  */
 
-
-function getLastProducts ($limit = null){
+/**
+ * Получаем последние добавленные товары
+ * 
+ * @param integer $limit Лимит товаров
+ * @return array Массив товаров 
+ */
+function getLastProducts($limit = null)
+{
+    global $db;
     $sql = "SELECT *
-            FROM products 
+            FROM `products` 
             ORDER BY id DESC";
-    
-    if ($limit){
+    if($limit){
         $sql .= " LIMIT {$limit}";
     }
-
-    $rs = db()->query($sql);
-    return createSmartyRsArray($rs);
+   
+    $rs = mysqli_query($db, $sql); 
+   
+   return createSmartyRsArray($rs); 
 }
-
 
 /**
  * Получить продукты для категории $itemId
  * 
  * @param integer $itemId ID категории
- * @return array массив продуктов
+ * @return array массив продуктов 
  */
-function getProductsByCat($itemId){
-    $itemId = intval($itemId); //intval - преобразует в тип integer, защита от Sql-инъекций
-    $sql = "SELECT *
-            FROM products 
+function getProductsByCat($itemId)
+{
+   global $db;
+   $itemId = intval($itemId);
+   $sql = "SELECT * 
+            FROM products
             WHERE category_id = '{$itemId}'";
-    $rs = db()->query($sql);
-    return createSmartyRsArray($rs);
+   
+   $rs = mysqli_query($db, $sql); 
+   
+   return createSmartyRsArray($rs);   
 }
 
 
 /**
- * Получить данные продукта по ID
+ * Получить данные продукта по ID 
  * 
  * @param integer $itemId ID продукта
- * @return array массив данных продукта
+ * @return array массив данных продукта 
  */
-function getProductById($itemId){
-    $itemId = intval($itemId); //intval - преобразует в тип integer, защита от Sql-инъекций       
-    $sql = "SELECT *
-            FROM products 
-            WHERE id = '{$itemId}'";       
-    $rs = db()->query($sql);
-    return mysqli_fetch_assoc($rs);
+function getProductById($itemId)
+{
+   global $db;
+   $itemId = intval($itemId);
+   $sql = "SELECT * 
+            FROM products
+            WHERE id = '{$itemId}'";
+   
+   $rs = mysqli_query($db, $sql); 
+   return mysqli_fetch_assoc($rs);   
 }
 
-
 /**
- * Получить список продуктов из массива идентификаторов  (ID`s)
+ * Получить список продуктов из массива идентификаторов (ID`s)
  * 
  * @param array $itemsIds массив идентификаторов продуктов
- * @return array массив данных продуктов
+ * @return array массив данных продуктов 
  */
-function getProductsFromArray($itemsIds){
-    $strIds = implode($itemsIds, ','); // Создаем строку с массивом айди через запятую
-    $sql = "SELECT *
-            FROM products 
-            WHERE id in ({$strIds})";   
-    $rs = db()->query($sql);
-    return createSmartyRsArray($rs);
+function getProductsFromArray($itemsIds)
+{
+    global $db;
+    $strIds = implode($itemsIds, ', ');
+    $sql = "SELECT * 
+            FROM products
+            WHERE id in ({$strIds})";		
+    $rs = mysqli_query($db, $sql); 
+   
+   return createSmartyRsArray($rs); 
 }

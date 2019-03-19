@@ -1,21 +1,28 @@
 <?php
 
+
 /**
- * 
  * Инициализация подключения к БД
  * 
  */
-//>{* /db.php *} 
-function db() {
-    $dbHost = '127.0.0.1';
-    $dbUser = 'root';
-    $dbPass = '';
-    $dbName = 'myshop';
-    $db     = new mysqli($dbHost, $dbUser, $dbPass, $dbName); //создаем объект
-    $db->set_charset('utf8'); // задаем кодировку
-    if ($db->connect_errno) {
-        die('Не удалось подключится к MySQL.');
-    } return $db;
-}
 
-//<
+  $dblocation = "127.0.0.1";   
+  $dbname = "myshop.local";   
+  $dbuser = "root";   
+  $dbpasswd = "";   
+
+   // соединяемся с БД
+  $db = mysqli_connect($dblocation, $dbuser, $dbpasswd);  
+  
+  if(! $db){   
+    echo "Ошибка доступа к MySql";   
+    exit();   
+  }   
+  
+  // Устанавливает кодировку по умолчанию для текущего соединения.
+  mysqli_set_charset($db, 'utf8');
+  
+  if( ! mysqli_select_db($db, $dbname) ){   
+    echo "Ошибка доступа к базе данных: {$dbname}";   
+    exit();   
+  }   

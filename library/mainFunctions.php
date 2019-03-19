@@ -1,5 +1,7 @@
 <?php
+
 /**
+ *
  * Основные функции
  * 
  */
@@ -8,13 +10,12 @@
  * Формирование запрашиваемой страницы
  * 
  * @param string $controllerName название контроллера
- * @param string $actionName название функции обработки страницы
+ * @param string $actionName название функции обработки страницы 
  */
-
-function loadPage($smarty, $controllerName, $actionName = 'index') {
-    //Подключаем контроллер
-    include_once PathPrefix . $controllerName . PathPostfix;
-    //Формируем название функции
+function loadPage($smarty, $controllerName, $actionName = 'index'){
+	
+	include_once PathPrefix . $controllerName . PathPostfix;
+   
     $function = $actionName . 'Action';
     $function($smarty);
 }
@@ -23,21 +24,22 @@ function loadPage($smarty, $controllerName, $actionName = 'index') {
  * Загрузка шаблона
  * 
  * @param object $smarty объект шаблонизатора
- * @param string $templateName название файла шаблона
+ * @param string $templateName название файла шаблона 
  */
-function loadTemplate($smarty, $templateName) {
-    // Обрабатываем шаблон и выводим его на экран функцией display
-    $smarty->display($templateName. TemplatePostfix);
+function loadTemplate($smarty, $templateName)
+{
+    $smarty->display($templateName . TemplatePostfix);
 }
 
 /**
- * Функция отлавливание ошибок
+ * Функция отладки. Останавливает работу програамы выводя значение переменной
+ * $value
  * 
- * @param boolean $value По умолчание равен null
- * @param integer $die Значение либо 1 либо 0
+ * @param variant $value переменная для вывода ее на страницу 
  */
-function d($value = null, $die = 1) {
-    echo 'Debug: <br/><pre>';
+function d($value = null, $die = 1)
+{
+    echo 'Debug: <br /><pre>';
     print_r($value);
     echo '</pre>';
     
@@ -45,18 +47,31 @@ function d($value = null, $die = 1) {
 }
 
 /**
- * Преобразование результата работы функции выборки в ассоциативный массив
+ * Преобразорвание результата работы функции выборки в ассоциативный массив
  * 
  * @param recordset $rs набор строк - результат работы SELECT
- * @return array
+ * @return array 
  */
-function createSmartyRsArray($rs){
-    if(!$rs) return false;
+function createSmartyRsArray($rs)
+{
+    if(! $rs) return false;
     
     $smartyRs = array();
-    while ($row = $rs->fetch_assoc()){
-        $smartyRs[]= $row;
+    while ($row = mysqli_fetch_assoc($rs)) {
+        $smartyRs[] = $row;
     }
-    
+
     return $smartyRs;
+}
+
+/**
+ * Редирект
+ * 
+ * @param string $url адрес для перенаправления 
+ */
+function redirect($url)
+{
+    if(! $url) $url = '/';
+    header("Location: {$url}"); 
+    exit; 
 }

@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2019-02-08 11:34:57
+<?php /* Smarty version Smarty-3.1.6, created on 2019-02-13 18:44:07
          compiled from "../views/default\cart.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:92635c5d348917b386-79907137%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:6505c643afc853fc6-98520373%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ba49ac498b8cf2b9e90bf9a7a8f97ee29f5cd8d0' => 
     array (
       0 => '../views/default\\cart.tpl',
-      1 => 1549614895,
+      1 => 1550072645,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '92635c5d348917b386-79907137',
+  'nocache_hash' => '6505c643afc853fc6-98520373',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.6',
-  'unifunc' => 'content_5c5d34891cd41',
+  'unifunc' => 'content_5c643afc97ce0',
   'variables' => 
   array (
     'rsProducts' => 0,
@@ -24,7 +24,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5c5d34891cd41')) {function content_5c5d34891cd41($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_5c643afc97ce0')) {function content_5c643afc97ce0($_smarty_tpl) {?>
 
 <h1>Корзина</h1>
 
